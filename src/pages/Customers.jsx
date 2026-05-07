@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
@@ -7,6 +7,9 @@ import AddCustomer from '../components/AddCustomer';
 import CustomerList from '../components/CustomerList';
 
 function Customers() {
+
+  const [addCustomerStatus,setAddCustomerStatus]=useState("data")
+
   return (
     <>
       <Header />
@@ -15,13 +18,13 @@ function Customers() {
         <div className='d-flex justify-content-between'>
           <h2 className='dipslay-4'>Customers</h2>
 
-          <AddCustomer />
+          <AddCustomer setaddStatus={setAddCustomerStatus}/>
 
         </div>
 
         {/* customer list */}
         
-        <CustomerList />
+        <CustomerList addStatus={addCustomerStatus} />
 
       </div>
 
