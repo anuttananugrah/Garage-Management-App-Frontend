@@ -23,3 +23,36 @@ export const getCustomers=async()=>{
     }
     return await commonApi(`${base_url}`,"GET",{},headers)
 }
+
+export const getCustomersByIdApi=async(id)=>{
+    const headers={
+        "Autherization":`Token ${sessionStorage.getItem('token')}`
+    }
+    return await commonApi(`${base_url}/customers/${id}/`,"GET",{},headers)
+}
+
+
+
+export const addCustomerServicesApi=async(id,data)=>{
+    const headers={
+        "Autherization":`Token ${sessionStorage.getItem('token')}`
+    }
+    return await commonApi(`${base_url}/customers/${id}/addservice/`,"POST",data,headers)
+}
+
+export const getCustomerServicesApi=async(id)=>{
+    const headers={
+        "Autherization":`Token ${sessionStorage.getItem('token')}`
+    }
+    return await commonApi(`${base_url}/customers/${id}/servicelist/`,"GET",{},headers)
+}
+
+// service status updation
+
+export const serviceStatusUpdateApi=async(id,data)=>{
+    const headers={
+        "Autherization":`Token ${sessionStorage.getItem('token')}`
+    }
+    return await commonApi(`${base_url}/service/${id}/`,"PATCH",data,headers)
+
+}

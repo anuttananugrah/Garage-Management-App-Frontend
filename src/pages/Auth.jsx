@@ -4,6 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa'
 import { userSignUpApi, userSignInApi } from '../services/allApi'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { authContext } from '../contextApi/StatusContext'
 
 function Auth() {
     const navigate = useNavigate()
@@ -11,6 +12,9 @@ function Auth() {
     const [inputData, setInputData] = useState({
         username: "", password: "", cpassword: "", email: ""
     })
+
+const {setLoginStatus}=useContext(authContext)
+
 
     const handleSignUp = async () => {
         const { username, password, cpassword, email } = inputData
@@ -65,6 +69,7 @@ function Auth() {
                 toast.success("sign in successfull")
                 sessionStorage.setItem('token', response.data.token)
                 sessionStorage.setItem('uname', username)
+                setLoginStatus(true)
                 navigate('/customers')
             }
             else {

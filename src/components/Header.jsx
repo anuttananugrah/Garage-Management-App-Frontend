@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import Container from 'react-bootstrap/Container'
 import { Button } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import { FaCar } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaPowerOff } from "react-icons/fa6";
+import { authContext } from '../contextApi/StatusContext'
 
 function Header() {
-
+const {setLoginStatus}=useContext(authContext)
     const [username, setUsername] = useState()
     const nav = useNavigate()
     useEffect(() => {
@@ -17,6 +18,7 @@ function Header() {
     }, [])
     const handleLogout = () => {
         sessionStorage.clear()
+        setLoginStatus(false)
         nav('/')
     }
     return (

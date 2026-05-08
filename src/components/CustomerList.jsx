@@ -47,7 +47,7 @@ function CustomerList(addStatus) {
                                             </Card.Text>
                                             {/* <Button variant="primary" onClick={'/customer/2'}><IoIosMore /></Button> */}
                                             <div className='d-flex justify-content-center'>
-                                                <Link variant="primary" className='btn btn-info' to={'/customer/2'}><IoIosMore /></Link>
+                                                <Link variant="primary" className='btn btn-info' to={`/customer/${item.id}`}><IoIosMore /></Link>
                                             </div>
                                         </Card.Body>
                                     </Card>
